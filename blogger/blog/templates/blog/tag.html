@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+
+<div id="container">
+	<h1>Articles with tag {{ tag.tag_text }}</h1>
+
+	{% if tag_list %}
+	    <ul id="articles">
+	    {% for article in latest_article_list %}
+	        <li><a href="{% url 'blog:article' article.id %}">{{ article.title }}</a></li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No articles are available.</p>
+	{% endif %}
+</div>

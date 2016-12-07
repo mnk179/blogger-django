@@ -11,6 +11,14 @@
 
 	<p>{{ article.body }}</p>
 	<div class="date">Last edited on {{ article.last_edit_date }}</div>
+	{% if article.tag_set.all %}
+		<div class="tag_list">
+			<span>Tags: </span>
+		{% for tag in article.tag_set.all %}
+	    	<a class="tag" id="tag{{ forloop.counter }}">{{ tag.tag_text }}</a>
+		{% endfor %}
+		</div>
+	{% endif %}
 	<hr>
 	<h2>Comments</h2>
 </div>
