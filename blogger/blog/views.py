@@ -1,6 +1,18 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views import generic
 
+from .models import Article
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the blog index.")
+class IndexView(generic.ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'latest_article_list'
+
+    def get_queryset(self):
+        """Return the last five published Articles."""
+        return Article.objects.order_by('-pub_date')[:5]
+
+class ArticleView(generic.DetailView):
+    model = Article
+    template_name = 'blog/article.html'

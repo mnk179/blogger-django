@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blog/article.css' %}" />
+
+<div id="container">
+	<h1>{{ article.title }}</h1>
+	<div class="date">Posted on {{ article.pub_date }}</div>
+
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+	<p>{{ article.body }}</p>
+	<div class="date">Last edited on {{ article.last_edit_date }}</div>
+	<hr>
+	<h2>Comments</h2>
+</div>
