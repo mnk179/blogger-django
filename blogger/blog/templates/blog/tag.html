@@ -1,13 +1,12 @@
-{% load static %}
+{% extends "blog/base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
-
+{% block content %}
 <div id="container">
-	<h1>Articles with tag {{ tag.tag_text }}</h1>
+	<h1>Articles with tag <i>{{ tag.tag_text }}</i></h1>
 
-	{% if tag_list %}
+	{% if tag.article_set.all %}
 	    <ul id="articles">
-	    {% for article in latest_article_list %}
+	    {% for article in tag.article_set.all %}
 	        <li><a href="{% url 'blog:article' article.id %}">{{ article.title }}</a></li>
 	    {% endfor %}
 	    </ul>
@@ -15,3 +14,4 @@
 	    <p>No articles are available.</p>
 	{% endif %}
 </div>
+{% endblock %}

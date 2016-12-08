@@ -1,7 +1,6 @@
-{% load static %}
+{% extends "blog/base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
-
+{% block content %}
 <div id="container">
 	<h1>All Articles</h1>
 
@@ -15,3 +14,4 @@
 	    <p>No articles are available.</p>
 	{% endif %}
 </div>
+{% endblock %}

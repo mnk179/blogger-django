@@ -17,10 +17,11 @@ class ArticleView(generic.DetailView):
 	model = Article
 	template_name = 'blog/article.html'
 
-class TagView(generic.ListView):
+# Use non-generic views next time around
+class TagView(generic.DetailView):
+	model = Tag
 	template_name = 'blog/tag.html'
-	context_object_name = 'tag_list'
+	#context_object_name = 'tag_list'
 
-	def get_queryset(self):
-		"""Return the last five published Articles."""
-		return Tag.objects.order_by('pub_date')
+	"""def get_queryset(self):
+		return Tag.objects.order_by('pub_date')"""

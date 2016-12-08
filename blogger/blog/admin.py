@@ -16,12 +16,10 @@ from .models import Article, Tag
 
 
 class TagInline(admin.TabularInline):
-
     model = Article.tags.through
 
 
 class ArticleAdmin(admin.ModelAdmin):
-
     exclude = ('tags', )
     inlines = (
        TagInline,

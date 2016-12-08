@@ -1,8 +1,6 @@
-{% load static %}
+{% extends "blog/base.html" %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}" />
-<link rel="stylesheet" type="text/css" href="{% static 'blog/article.css' %}" />
-
+{% block content %}
 <div id="container">
 	<h1>{{ article.title }}</h1>
 	<div class="date">Posted on {{ article.pub_date }}</div>
@@ -11,14 +9,15 @@
 
 	<p>{{ article.body }}</p>
 	<div class="date">Last edited on {{ article.last_edit_date }}</div>
-	{% if article.tag_set.all %}
+	{% if article.tags.all %}
 		<div class="tag_list">
 			<span>Tags: </span>
-		{% for tag in article.tag_set.all %}
-	    	<a class="tag" id="tag{{ forloop.counter }}">{{ tag.tag_text }}</a>
-		{% endfor %}
+			{% for tag in article.tags.all %}
+	    		<a href="{% url 'blog:tag' tag.id %}" class="tag" id="tag{{ forloop.counter }}">{{ tag.tag_text }}</a>
+			{% endfor %}
 		</div>
 	{% endif %}
 	<hr>
 	<h2>Comments</h2>
 </div>
+{% endblock %}
