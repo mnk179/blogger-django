@@ -23,4 +23,7 @@ class Comment(models.Model):
 	body = models.TextField()
 	pub_date = models.DateTimeField('date posted', auto_now_add=True)
 	def __str__(self):
-		return self.body[:100]
+		addition = ""
+		if len(self.body) > 50:
+			addition = "..."
+		return self.body[:50] + addition

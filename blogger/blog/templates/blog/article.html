@@ -4,22 +4,35 @@
 
 {% block content %}
 <div id="container">
-	<h1>{{ article.title }}</h1>
-	<div class="date">Posted on {{ article.pub_date }}</div>
+	<div id="article">
+		<h1>{{ article.title }}</h1>
+		<div class="date">Posted on {{ article.pub_date }}</div>
 
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-	<p>{{ article.body }}</p>
-	<div class="date">Last edited on {{ article.last_edit_date }}</div>
-	{% if article.tags.all %}
-		<div class="tag_list">
-			<span>Tags: </span>
-			{% for tag in article.tags.all %}
-	    		<a href="{% url 'blog:tag' tag.id %}" class="tag" id="tag{{ forloop.counter }}">{{ tag.tag_text }}</a>
-			{% endfor %}
-		</div>
-	{% endif %}
+		<p>{{ article.body }}</p>
+		<div class="date">Last edited on {{ article.last_edit_date }}</div>
+		{% if article.tags.all %}
+			<div id="tag_list">
+				<span>Tags: </span>
+				{% for tag in article.tags.all %}
+		    		<a href="{% url 'blog:tag' tag.id %}" class="tag" id="tag{{ forloop.counter }}">{{ tag.tag_text }}</a>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
 	<hr>
-	<h2>Comments</h2>
+	<div id="comments">
+		<h2>Comments</h2>
+		{% if article.comment_set.all %}
+			<div id="comment_list">
+				{% for comment in article.comment_set.all %}
+					<div class="poster">{{ comment.poster }}</div>
+					<div class="date">{{ comment.pub_date }}</div>
+					<div class="comment_body">{{ comment.body }}</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
 </div>
 {% endblock %}

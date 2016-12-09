@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.views import generic
 
-from .models import Article, Tag
+from .models import Article, Tag, Comment
 
 class IndexView(generic.ListView):
 	template_name = 'blog/index.html'
