@@ -38,19 +38,34 @@ a:hover {
   overflow: hidden;
 }
 
+.nav_item {
+  font-weight: bold;
+  font-size: 1.4em;
+  margin: 0 10px;
+  padding: 5px 15px;
+  /*border: solid 1px black;*/
+}
+
+#top_navbar {
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  background: #fff;
+  padding: 10px 40px;
+  margin-top: 20px;
+}
+
 #container {
   width: 90%;
   height: 90%;
   margin: 0 auto;
   background: #fff;
   padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
 }
 
 #content {
   clear: both;
-  padding-top: 20px;
+  padding-top: 5px;
 }
 
 .date {

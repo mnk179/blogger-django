@@ -1,5 +1,7 @@
 {% extends "blog/base.html" %}
 
+{% block title %}{{ tag.tag_text }} - Blogger{% endblock %}
+
 {% block content %}
 <div id="container">
 	<h1>Articles with tag <i>{{ tag.tag_text }}</i></h1>

@@ -8,6 +8,11 @@
 </head>
 
 <body>
+	<div id="top_navbar">
+		<a href="{% url 'blog:index' %}" class="nav_item">Home</a>
+		<a href="" class="nav_item">Lorem</a>
+		<a href="" class="nav_item">Ipsum</a>
+	</div>
 	<div id="content">
 		{% block content %}{% endblock %}
 	</div>
