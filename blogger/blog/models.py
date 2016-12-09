@@ -16,3 +16,11 @@ class Article(models.Model):
 	tags = models.ManyToManyField(Tag)
 	def __str__(self):
 		return self.title
+
+class Comment(models.Model):
+	article = models.ForeignKey(Article, on_delete=models.CASCADE)
+	poster = models.CharField(max_length=20)
+	body = models.TextField()
+	pub_date = models.DateTimeField('date posted', auto_now_add=True)
+	def __str__(self):
+		return self.body[:100]
