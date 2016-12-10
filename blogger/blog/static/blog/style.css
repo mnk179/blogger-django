@@ -79,3 +79,20 @@ hr {
   background-color: #000;
   border-style: none;
 }
+
+/* something is wrong here */
+
+.comment {
+  padding: 20px 0px;
+  height: 100%;
+}
+
+.comment_header {
+  float: left;
+  width: 200px;
+}
+
+.comment_body {
+  overflow: hidden;
+  vertical-align: top;
+}
